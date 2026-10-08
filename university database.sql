@@ -1,0 +1,39 @@
+CREATE DATABASE CollegeDB;
+USE CollegeDB;
+
+CREATE TABLE CSE (
+    RollNo INT PRIMARY KEY,
+    Name VARCHAR(50)
+);
+
+CREATE TABLE AIML (
+    RollNo INT PRIMARY KEY,
+    Name VARCHAR(50)
+);
+
+INSERT INTO CSE VALUES
+(101, 'Ravi'),
+(102, 'Anil'),
+(103, 'Priya'),
+(104, 'Sneha');
+
+INSERT INTO AIML VALUES
+(103, 'Priya'),
+(104, 'Sneha'),
+(105, 'Kiran'),
+(106, 'Meena');
+
+SELECT RollNo, Name FROM CSE
+UNION
+SELECT RollNo, Name FROM AIML;
+
+SELECT CSE.RollNo, CSE.Name
+FROM CSE
+INNER JOIN AIML
+ON CSE.RollNo = AIML.RollNo;
+
+SELECT CSE.RollNo, CSE.Name
+FROM CSE
+LEFT JOIN AIML
+ON CSE.RollNo = AIML.RollNo
+WHERE AIML.RollNo IS NULL;
